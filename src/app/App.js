@@ -28,7 +28,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App d-flex flex-column align-items-center w-100">
+      <div className="App d-flex flex-column align-items-center vw-100">
         <SnackbarProvider>
           <Navbar />
           <Switch>

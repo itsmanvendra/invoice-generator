@@ -6,7 +6,6 @@ export const invoicesSlice = createSlice({
     reducers: {
         addInvoice: (state, action) => {
             const newInvoice = action.payload;
-            console.log(newInvoice);
             newInvoice.id = newInvoice.invoiceNumber;
             newInvoice.invoiceNumber = `INV-${newInvoice.invoiceNumber}`
             return [...state, newInvoice]
@@ -16,7 +15,6 @@ export const invoicesSlice = createSlice({
             return state.filter((invoice) => invoice.id !== id);
         },
         editInvoice: (state, action) => {
-            console.log(action.payload);
             const id = action.payload.id;
             const editedInvoice = action.payload;
             return state.map((invoice) => {

@@ -121,29 +121,29 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
         Cell: ({ value }) => {
           return (
             <div className="d-flex flex-column p-2">
-              <div className="d-flex m-1">
+              <div className="d-flex m-1 justify-content-between">
                 <div
-                  className="px-2 py-1 border rounded rounded-2 me-1 bg-primary text-white"
+                  className="px-2 py-1 border rounded rounded-2 me-1 bg-primary text-white cursor-pointer"
                   onClick={() => handleView(value)}
                 >
                   <AiFillEye />
-                  View
+                  <span className="d-none d-lg-block">View</span>
                 </div>
                 <div
-                  className="px-2 py-1 border rounded rounded-2 ms-1 bg-secondary text-white"
+                  className="px-2 py-1 border rounded rounded-2 ms-1 bg-secondary text-white cursor-pointer "
                   onClick={() => handleEdit(value)}
                 >
                   <AiFillEdit />
-                  Edit
+                  <span className="d-none d-lg-block">Edit</span>
                 </div>
               </div>
-              <div className=" ">
+              <div className="">
                 <div
-                  className="px-2 py-1 border rounded rounded-2 bg-danger text-white mx-1 text-center"
+                  className="px-2 py-1 border rounded rounded-2 bg-danger text-white mx-1 text-center cursor-pointer "
                   onClick={() => handleDelete(value)}
                 >
                   <AiFillDelete />
-                  Delete
+                  <span className="d-none d-lg-block">Delete</span>
                 </div>
               </div>
             </div>
