@@ -12,7 +12,7 @@ const HomePage = ({ editInvoiceData }) => {
   };
 
   return (
-    <div className="d-flex m-4 justify-content-center shadow-lg overflow-x-scroll overflow-x-auto ">
+    <div className="d-flex m-4 justify-content-center shadow-lg custom-scroll ">
       <ListAllInvoices
         data={invoices}
         handleEditInvoiceData={handleEditInvoiceData}

@@ -2,14 +2,14 @@ import React from "react";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 const Pagination = ({pageIndex, pageSize, isPrev, isNext, handlePageSizeChange, previousPage, nextPage, data, pageOptions}) => {
   return (
-    <div className="d-flex m-2">
-      <div className="flex-grow-1">
+    <div className="d-flex flex-column flex-md-row m-2">
+      <div className="flex-grow-1 my-2 my-md-0">
         Showing {pageIndex * pageSize + 1} to {(pageIndex * pageSize + pageSize < data.length) ? `${ pageIndex * pageSize + pageSize}` : `${data.length}`}{" "}
         invoices of {data.length} entries
       </div>
       <div>
         <select
-          className="px-2 py-1 rounded rounded-2 me-2"
+          className="px-2 py-1 rounded rounded-2 me-2 my-2 my-md-0"
           value={pageSize}
           onChange={(e) => handlePageSizeChange(e)}
         >
@@ -20,7 +20,7 @@ const Pagination = ({pageIndex, pageSize, isPrev, isNext, handlePageSizeChange, 
           ))}
         </select>
       </div>
-      <div className="d-flex align-items-center">
+      <div className="d-flex align-items-center my-2 my-md-0">
         <button
           onClick={() => previousPage()}
           disabled={!isPrev}

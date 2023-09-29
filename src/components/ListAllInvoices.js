@@ -64,7 +64,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
       {
         Header: "Invoice Number",
         accessor: "invoiceNumber",
-        minWidth: 100,
+        minWidth: 80,
         maxWidth: 200,
         width: 150,
         Cell: ({ value }) => {
@@ -74,7 +74,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
       {
         Header: "Billed By",
         accessor: "billFrom",
-        minWidth: 100,
+        minWidth: 80,
         maxWidth: 200,
         width: 150,
 
@@ -85,7 +85,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
       {
         Header: "Billed To",
         accessor: "billTo",
-        minWidth: 100,
+        minWidth: 80,
         maxWidth: 200,
         width: 150,
         Cell: ({ value }) => {
@@ -95,6 +95,8 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
       {
         Header: "Issue Date",
         accessor: "dateOfIssue",
+        minWidth: 80,
+        maxWidth: 200,
         width: 150,
         Cell: ({ value }) => {
           return <div className="fs-6 fw-bold px-4 py-2 ">{value}</div>;
@@ -103,7 +105,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
       {
         Header: "Amount",
         accessor: "total",
-        minWidth: 100,
+        minWidth: 80,
         maxWidth: 200,
         width: 150,
         Cell: ({ value }) => {
@@ -123,14 +125,14 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
             <div className="d-flex flex-column p-2">
               <div className="d-flex m-1 justify-content-between">
                 <div
-                  className="px-2 py-1 border rounded rounded-2 me-1 bg-primary text-white cursor-pointer"
+                  className="px-2 py-1 border rounded rounded-2 me-1 bg-primary text-white cursor-pointer w-100"
                   onClick={() => handleView(value)}
                 >
                   <AiFillEye />
                   <span className="d-none d-lg-block">View</span>
                 </div>
                 <div
-                  className="px-2 py-1 border rounded rounded-2 ms-1 bg-secondary text-white cursor-pointer "
+                  className="px-2 py-1 border rounded rounded-2 ms-1 bg-secondary text-white cursor-pointer w-100 "
                   onClick={() => handleEdit(value)}
                 >
                   <AiFillEdit />
@@ -200,7 +202,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
 
   // Render the UI for your table
   return (
-    <div className="p-4 border rounded rounded-2">
+    <div className="p-4 w-75 w-md-100 d-flex flex-column justify-content-center">
       <Filter
         handleFilterChange={handleFilterChange}
         filterInput={filterInput}
@@ -215,7 +217,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps()}
-                  className="fs-5 fw-semibold text-secondary px-4 py-2 text-start"
+                  className="fs-md-5 fs-6 fw-semibold text-secondary px-2 px-md-4 py-2 text-wrap text-center text-md-start"
                 >
                   {column.render("Header")}
                 </th>

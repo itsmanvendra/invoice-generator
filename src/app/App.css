@@ -91,3 +91,9 @@ hr {
 .cursor-pointer {
   cursor: pointer
 }
+.custom-scroll{
+  overflow-y: auto;
+  overflow-x: auto;
+  height: 100%;
+  width: 100%;
+}
