@@ -9,8 +9,9 @@ import { deleteInvoice } from "../features/invoices/invoicesSlice";
 import InvoiceModal from "./InvoiceModal";
 import { Redirect } from "react-router-dom";
 import { useSnackbar } from "notistack";
+import { editInvoice } from "../features/invoices/copyinvoiceSlice";
 
-const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
+const ListAllInvoices = ({ data }) => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [id, setId] = useState(null);
   const [invoiceNumber, setInvoiceNumber] = useState(null);
@@ -50,7 +51,7 @@ const ListAllInvoices = ({ data, handleEditInvoiceData }) => {
 
   // handle edit invoice
   const handleEdit = (id) => {
-    handleEditInvoiceData(id);
+    dispatch(editInvoice(data.find((invoice) => invoice.id === id)));
     setRedirect("/editInvoice");
   };
 

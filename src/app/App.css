@@ -97,3 +97,11 @@ hr {
   height: 100%;
   width: 100%;
 }
+
+.invoiceItemsList{
+  cursor: pointer;
+}
+
+.invoiceItemsList:hover{
+  background-color: #f5f7f9;
+}

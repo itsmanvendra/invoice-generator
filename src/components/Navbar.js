@@ -1,7 +1,29 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { IoAdd, IoHome } from "react-icons/io5";
+import { resetInvoice } from "../features/invoices/copyinvoiceSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useLocation} from "react-router-dom";
+
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  const handleCreateInvoice = () => {
+    console.log("Create Invoice");
+    dispatch(resetInvoice());
+    history.push("/createInvoice");
+  };
+  useEffect(() => {
+    if (location.pathname === "/editInvoice") {
+      setButtonDisabled(true);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [location])
+
     return (
       <div className="d-flex p-2 p-sm-1 bg-primary vw-100 align-items-center justify-content-center">
         <div className="w-75 w-sm-100 d-flex align-items-center ">
@@ -18,16 +40,18 @@ const Navbar = () => {
                 Home
               </div>
             </Link>
-            <Link
-              to="/createInvoice"
-              className="align-items-center d-flex text-decoration-none border border-info px-2 rounded rounded-4"
+            <button
+              // to="/createInvoice"
+              className={`align-items-center d-flex text-decoration-none bg-primary border border-info px-2 rounded rounded-4 ${buttonDisabled ? "bg-info": ""}`}
+              onClick={() => handleCreateInvoice()}
+              disabled={buttonDisabled}
             >
               <IoAdd
                 size={16}
                 className="mx-1 text-white fw-semibol d-none d-lg-block"
               />
               <div className="text-light fs-6 fs-lg-4 fw-lg-semibold  fw-medium">Create Invoice</div>
-            </Link>
+            </button>
           </div>
         </div>
       </div>

@@ -12,7 +12,6 @@ class App extends Component {
     super(props);
     this.state = {
       invoiceNumber: 100,
-      editInvoiceData: {},
     };
   }
   //increment invoice number
@@ -21,10 +20,9 @@ class App extends Component {
       invoiceNumber: prevState.invoiceNumber + 1,
     }));
   };
-  //update edit invoice data
-  updateEditInvoiceData = (data) => {
-    this.setState({ editInvoiceData: data });
-  };
+  
+
+  
 
   render() {
     return (
@@ -33,19 +31,20 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/">
-              <HomePage editInvoiceData={this.updateEditInvoiceData} />
+              <HomePage  />
             </Route>
             <Route path="/createInvoice">
               <InvoiceForm
                 invoiceNumber={this.state.invoiceNumber}
                 autoIncrement={this.increment}
+                type="create"
               />
             </Route>
             <Route path="/editInvoice">
               <InvoiceForm
                 invoiceNumber={this.state.invoiceNumber}
                 autoIncrement={this.increment}
-                editInvoiceData={this.state.editInvoiceData}
+                type="edit"
               />
             </Route>
           </Switch>
@@ -54,5 +53,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
