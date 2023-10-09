@@ -12,7 +12,6 @@ const Navbar = () => {
   const location = useLocation();
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const handleCreateInvoice = () => {
-    console.log("Create Invoice");
     dispatch(resetInvoice());
     history.push("/createInvoice");
   };

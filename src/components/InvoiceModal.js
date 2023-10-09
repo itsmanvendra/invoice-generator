@@ -42,7 +42,6 @@ class InvoiceModal extends React.Component {
 
   // save invoice
   saveInvoice = (data) => {
-    
     // if we are editing an invoice to update it
     if (this.props.info.type === "edit") {
       this.props.dispatch(editInvoice({ ...data }));

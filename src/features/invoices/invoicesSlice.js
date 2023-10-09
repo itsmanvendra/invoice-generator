@@ -18,9 +18,9 @@ export const invoicesSlice = createSlice({
             const id = action.payload.id;
             const editedInvoice = action.payload;
             return state.map((invoice) => {
-                if (invoice.id === Number(id)) {
-                    const invoiceNumber = `INV-${editedInvoice.invoiceNumber}`
-                    return { ...editedInvoice, invoiceNumber };
+                if (invoice.id == id) {
+                    // const invoiceNumber = `INV-${editedInvoice.invoiceNumber}`
+                    return editedInvoice;
                 } else {
                     return invoice;
                 }

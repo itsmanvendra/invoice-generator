@@ -17,7 +17,6 @@ class InvoiceForm extends React.Component {
   constructor(props) {
     super(props);
     // initialize state for invoice form
-    console.log(props);
     this.state = {
       isOpen: false,
       isCreateNewInvoiceModalOpen: `${this.props.type === "edit" ? "" : true}`,
@@ -27,8 +26,8 @@ class InvoiceForm extends React.Component {
       }`,
       currentDate: "",
       invoiceNumber: `${
-        this.props?.copyInvoiceData
-          ? this.props.copyInvoiceData.id
+        this.props.type === "edit"
+          ? this.props.copyInvoiceData.invoiceNumber
           : this.props.invoiceNumber
       }`,
       dateOfIssue: `${
@@ -91,7 +90,7 @@ class InvoiceForm extends React.Component {
       }`,
       type: `${this.props.type}`,
       id: `${
-        this.props?.copyInvoiceData.id
+        this.props.type === "edit"
           ? this.props.copyInvoiceData.id
           : this.props.invoiceNumber
       }`,
@@ -169,6 +168,7 @@ class InvoiceForm extends React.Component {
       discountAmmount: `${item?.discountAmmount}`,
       currentDate: "",
       invoiceNumber: `${this.props.invoiceNumber}`,
+      id: `${this.props.invoiceNumber}`,
     })
     this.setState({ items: item?.items });
   }
