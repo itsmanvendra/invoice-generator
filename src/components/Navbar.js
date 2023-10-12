@@ -2,15 +2,20 @@ import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import { IoAdd, IoHome } from "react-icons/io5";
 import { resetInvoice } from "../features/invoices/copyinvoiceSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { deleteAllInvoices, undoDeleteAllInvoices } from "../features/invoices/invoicesSlice";
+import DeleteConfirmModal from "./DeleteConfirmModal";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
   const [buttonDisabled, setButtonDisabled] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showUndo, setShowUndo] = useState(false);
+  let invoices;
   const handleCreateInvoice = () => {
     dispatch(resetInvoice());
     history.push("/createInvoice");
@@ -22,6 +27,36 @@ const Navbar = () => {
       setButtonDisabled(false);
     }
   }, [location])
+
+  
+
+  const handle30sectimeOut = () => {
+    setTimeout(() => {
+      setShowUndo(false);
+    }, 5000);
+  }
+
+  const handleDeleteConfirm = () => {
+    dispatch(deleteAllInvoices());
+    setShowModal(false);
+    setShowUndo(true);
+    handle30sectimeOut();
+
+
+  }
+  const handleUndo = () => {
+    console.log(invoices)
+    dispatch(undoDeleteAllInvoices());
+
+    setShowUndo(false);
+  }
+  const handleDeleteAllInvoices = () => {
+    setShowModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  }
 
     return (
       <div className="d-flex p-2 p-sm-1 bg-primary vw-100 align-items-center justify-content-center">
@@ -51,7 +86,10 @@ const Navbar = () => {
               />
               <div className="text-light fs-6 fs-lg-4 fw-lg-semibold  fw-medium">Create Invoice</div>
             </button>
+            <button onClick={handleDeleteAllInvoices}>Delete All Invoices</button>
+            <button onClick={handleUndo} className={`${showUndo ? "d-flex" : "d-none"}`}>Undo</button>
           </div>
+          <DeleteConfirmModal show={showModal} handleClose={handleCloseModal} handleDeleteConfirm={handleDeleteConfirm} />
         </div>
       </div>
     );

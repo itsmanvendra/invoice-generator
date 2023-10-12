@@ -4,7 +4,7 @@ import ListAllInvoices from "../components/ListAllInvoices";
 
 const HomePage = () => {
   // getting all invoices from redux store
-  const invoices = useSelector((state) => state.invoices);
+  const invoices = useSelector((state) => state.invoices.data);
 
   return (
     <div className="d-flex m-4 justify-content-center shadow-lg custom-scroll ">

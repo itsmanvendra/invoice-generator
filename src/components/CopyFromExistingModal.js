@@ -11,7 +11,7 @@ function CopyFromExistingModal({
   handleImportDatafromExisting,
 }) {
   // getting all invoices from redux store
-  const invoices = useSelector((state) => state.invoices);
+  const invoices = useSelector((state) => state.invoices.data);
   // dispatching copyInvoice action
   const dispatch = useDispatch();
 

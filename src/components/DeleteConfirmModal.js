@@ -13,7 +13,7 @@ function DeleteConfirmModal({show, handleClose, handleDeleteConfirm, invoiceNumb
         <Modal.Body>
           <span className="fs-6">
             Are you sure you want to delete this invoice {" "}
-            <p className="fw-bold d-inline">{invoiceNumber}</p> ? This action cannot be undone.
+            <p className="fw-bold d-inline">{invoiceNumber ? invoiceNumber : "ALL"}</p> ? This action cannot be undone.
           </span>
         </Modal.Body>
         <Modal.Footer>
